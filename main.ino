@@ -20,6 +20,9 @@ int hide_min = 1000;
 int show_max = 5000;
 int show_min = 500;
 
+int left_max = 3;
+int right_max = 14;
+
 int state = 0;
 int random_hide = random(hide_min, hide_max);
 int random_show = random(show_min, show_max);
@@ -113,7 +116,7 @@ void loop(){
     analogWrite(motorPinLeft, 255);
     analogWrite(motorPinRight, 0);
     // Head fully exposed, exit state
-    if(headPos == 13){
+    if(headPos == right_max){
       analogWrite(motorPinLeft, 0);
       analogWrite(motorPinRight, 0);
       previousTime = millis();
@@ -153,7 +156,7 @@ void loop(){
     analogWrite(motorPinLeft, 0);
     analogWrite(motorPinRight, 255);
     // Head fully exposed, exit state
-    if(headPos == 3){
+    if(headPos == left_max){
       analogWrite(motorPinLeft, 0);
       analogWrite(motorPinRight, 0);
       //headPos = 2;
